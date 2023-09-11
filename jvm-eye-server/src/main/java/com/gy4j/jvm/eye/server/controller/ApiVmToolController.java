@@ -1,6 +1,8 @@
 package com.gy4j.jvm.eye.server.controller;
 
+import com.gy4j.jvm.eye.core.command.vmtool.AllLoadedClassesCommand;
 import com.gy4j.jvm.eye.core.command.vmtool.VmToolCommand;
+import com.gy4j.jvm.eye.core.command.vmtool.response.AllLoadedClassesReponse;
 import com.gy4j.jvm.eye.core.command.vmtool.response.VmToolResponse;
 import com.gy4j.jvm.eye.server.helper.CommandHelper;
 import com.gy4j.jvm.eye.server.server.EyeServer;
@@ -28,6 +30,13 @@ public class ApiVmToolController {
     public ResponseWrapper<VmToolResponse> execute(@RequestParam String clientId
             , @RequestBody VmToolCommand command) {
         VmToolResponse response = CommandHelper.dealCommand(eyeServer, clientId, command);
+        return ResponseWrapper.ok(response);
+    }
+
+    @RequestMapping("allLoadedClass")
+    public ResponseWrapper<AllLoadedClassesReponse> allLoadedClass(@RequestParam String clientId
+            , @RequestBody AllLoadedClassesCommand command) {
+        AllLoadedClassesReponse response = CommandHelper.dealCommand(eyeServer, clientId, command);
         return ResponseWrapper.ok(response);
     }
 }

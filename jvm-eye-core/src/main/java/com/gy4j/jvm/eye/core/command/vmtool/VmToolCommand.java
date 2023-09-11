@@ -65,6 +65,9 @@ public class VmToolCommand extends AbstractCommand {
         Class<?> clazz = classSet.iterator().next();
         VmTool vmTool = VmTool.getInstance();
         Object[] instances = vmTool.getInstances(clazz, 10);
+        //查询这个类的实例的占的内存
+        long l = vmTool.sumInstanceSize(clazz);
+        logger.info("class: {}, memory takes {}",clazz.getName(),l);
         if (instances.length == 0) {
             return BaseResponse.fail("找不到类实例：" + className, VmToolResponse.class);
         }

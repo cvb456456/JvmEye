@@ -115,4 +115,20 @@ public class VmTool {
         }
         return getInstances0(klass, limit);
     }
+
+    public long sumInstanceSize(Class klass){
+        return sumInstanceSize0(klass);
+    }
+
+    public Class<?>[] getAllLoadedClasses(){
+        return getAllLoadedClasses0(Class.class);
+    }
+
+    public long countInstances(Class<?> klass){
+        return countInstances0(klass);
+    }
+
+    public long getInstanceSize(Object instance){
+        return getInstanceSize0(instance);
+    }
 }

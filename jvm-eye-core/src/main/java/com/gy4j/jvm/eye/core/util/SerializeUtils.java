@@ -22,7 +22,8 @@ public class SerializeUtils {
      */
     public static byte[] encode(Object obj) {
         String className = obj.getClass().getName();
-        byte[] bytes = (className + "#" + JsonUtils.toJson(obj)).getBytes(StandardCharsets.UTF_8);
+        String s = JsonUtils.toJson(obj);
+        byte[] bytes = (className + "#" + s).getBytes(StandardCharsets.UTF_8);
         return bytes;
     }
 
